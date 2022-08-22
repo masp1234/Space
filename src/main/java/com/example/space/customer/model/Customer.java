@@ -1,10 +1,15 @@
 package com.example.space.customer.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "customer")
+@ToString
 public class Customer {
 
     @Id
@@ -19,6 +24,12 @@ public class Customer {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
-    private String email;
+    public Customer(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+    public Customer() {
+
+    }
 }
