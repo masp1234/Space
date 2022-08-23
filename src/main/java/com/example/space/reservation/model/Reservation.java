@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,9 +29,15 @@ public class Reservation {
                joinColumns = {@JoinColumn(name = "reservation_id")},
                inverseJoinColumns = {@JoinColumn(name = "customer_id")}
     )
-    private ArrayList<Customer> customers = new ArrayList<>();
+    private List<Customer> customers = new ArrayList<>();
 
-    public ArrayList<Customer> getCustomers() {
+    public Reservation() {}
+
+    public Reservation(List<Customer> customers) {
+        this.customers = customers;
+    }
+
+    public List<Customer> getCustomers() {
         return customers;
     }
 }
