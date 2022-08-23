@@ -10,4 +10,8 @@ import java.util.ArrayList;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
     ArrayList<Customer> findByFirstName(String name);
+
+    ArrayList<Customer> findByAgeGreaterThan(int minimumAge);
+
+    ArrayList<Customer> findByLastNameStartingWith(String startingWith);
 }
