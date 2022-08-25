@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -33,12 +34,12 @@ public class Customer {
     @Column(name = "age")
     private int age;
 
-    public ArrayList<Reservation> getReservations() {
+    public List<Reservation> getReservations() {
         return reservations;
     }
 
     @ManyToMany(mappedBy = "customers")
-    private ArrayList<Reservation> reservations = new ArrayList<>();
+    private List<Reservation> reservations = new ArrayList<>();
 
 
 
@@ -47,6 +48,12 @@ public class Customer {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+    }
+    public Customer(String firstName, String lastName, int age, List<Reservation> reservations) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.reservations = reservations;
     }
 
     public Customer() {
