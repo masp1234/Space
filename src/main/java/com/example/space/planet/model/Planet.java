@@ -23,6 +23,9 @@ public class Planet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "mass")
     private double mass;
 
@@ -48,6 +51,7 @@ public class Planet {
     private int numberOfMoons;
 
     public Planet(
+                  String name,
                   double mass,
                   double diameterInKilometers,
                   double densityInKilogramsPerCubicMeter,
@@ -77,5 +81,7 @@ public class Planet {
     private List<PlanetType> planetTypes;
 
 
+    public Planet() {
 
+    }
 }
