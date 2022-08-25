@@ -1,4 +1,4 @@
-package com.example.space.planettype;
+package com.example.space.planettype.model;
 
 import com.example.space.planet.model.Planet;
 

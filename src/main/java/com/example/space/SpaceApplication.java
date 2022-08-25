@@ -2,6 +2,7 @@ package com.example.space;
 
 import com.example.space.customer.model.Customer;
 import com.example.space.customer.repository.CustomerRepository;
+import com.example.space.planet.repository.PlanetRepository;
 import com.example.space.reservation.model.Reservation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +27,7 @@ public class SpaceApplication {
     @Bean
     public CommandLineRunner importData(
 
-            CustomerRepository customerRepository) {
+            CustomerRepository customerRepository, PlanetRepository planetRepository) {
 
         return (args) -> {
             /**

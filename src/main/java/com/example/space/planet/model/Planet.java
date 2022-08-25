@@ -1,7 +1,7 @@
 package com.example.space.planet.model;
 
 
-import com.example.space.planettype.PlanetType;
+import com.example.space.planettype.model.PlanetType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
