@@ -24,12 +24,19 @@ public class Reservation {
     private Long id;
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "customer_reservation",
                joinColumns = {@JoinColumn(name = "reservation_id")},
                inverseJoinColumns = {@JoinColumn(name = "customer_id")}
     )
     private List<Customer> customers = new ArrayList<>();
+
+    public Reservation(List<Customer> customers) {
+        this.customers = customers;
+    }
+    public Reservation() {
+
+    }
 
     public List<Customer> getCustomers() {
         return customers;

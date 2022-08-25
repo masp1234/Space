@@ -20,6 +20,13 @@ public class PlanetType {
     @ManyToMany(mappedBy = "planetTypes")
     private List<Planet> planets;
 
+    public PlanetType(String type) {
+        this.type = type;
+    }
+
+    public PlanetType() {
+
+    }
 }
 
 

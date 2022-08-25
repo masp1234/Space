@@ -2,8 +2,13 @@ package com.example.space;
 
 import com.example.space.customer.model.Customer;
 import com.example.space.customer.repository.CustomerRepository;
+import com.example.space.planet.model.Planet;
 import com.example.space.planet.repository.PlanetRepository;
+import com.example.space.planettype.model.PlanetType;
+import com.example.space.planettype.repository.PlanetTypeRepository;
 import com.example.space.reservation.model.Reservation;
+import com.example.space.reservation.repository.ReservationRepository;
+import com.example.space.spaceship.repository.SpaceshipRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
@@ -27,7 +33,11 @@ public class SpaceApplication {
     @Bean
     public CommandLineRunner importData(
 
-            CustomerRepository customerRepository, PlanetRepository planetRepository) {
+            CustomerRepository customerRepository,
+            PlanetRepository planetRepository,
+            PlanetTypeRepository planetTypeRepository,
+            ReservationRepository reservationRepository,
+            SpaceshipRepository spaceshipRepository) {
 
         return (args) -> {
             /**
@@ -40,6 +50,27 @@ public class SpaceApplication {
             customers.add(new Customer("David", "Palme", 65));
             customers.add(new Customer("Michelle", "Dessler", 87));
             customerRepository.saveAll(customers);
+
+            Reservation reservation = new Reservation(customers);
+            reservationRepository.save(reservation);
+
+
+
+            Planet planet = new Planet(34535345.5,
+                    43434232.3,
+                    12.1,
+                    2.0,
+                    42.2,
+                    2332434.0,
+                    -232.7,
+                    22,
+                    Arrays.asList(new PlanetType("Gas giant"), new PlanetType("Jovian"))
+                    );
+
+            planetRepository.save(planet);
+
+
+
 
         };
     }
