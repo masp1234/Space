@@ -1,11 +1,13 @@
 package com.example.space.planet.model;
 
 
+import com.example.space.planettype.PlanetType;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
@@ -44,6 +46,13 @@ public class Planet {
 
     @Column(name = "number_of_moons")
     private int numberOfMoons;
+
+    @ManyToMany
+    @JoinTable(name = "planet_planet_type",
+                joinColumns = {@JoinColumn(name = "planet_id")},
+            inverseJoinColumns = {@JoinColumn(name = "planet_type_id")}
+    )
+    private List<PlanetType> planetTypes;
 
 
 
