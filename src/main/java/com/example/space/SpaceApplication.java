@@ -38,7 +38,7 @@ public class SpaceApplication {
 
         return (args) -> {
 
-            final List<Customer> customers = new ArrayList<>();
+      /*     final List<Customer> customers = new ArrayList<>();
             customers.add(new Customer("Jack", "Bauer", 26));
             customers.add(new Customer("Chloe", "O'Brian", 28));
             customers.add(new Customer("Kim", "Bauer", 22));
@@ -46,8 +46,11 @@ public class SpaceApplication {
             customers.add(new Customer("Michelle", "Dessler", 87));
             customerRepository.saveAll(customers);
 
+
             Reservation reservation = new Reservation(customers);
             reservationRepository.save(reservation);
+            */
+
 
             Planet planet = new Planet(
                     "Jupiter",

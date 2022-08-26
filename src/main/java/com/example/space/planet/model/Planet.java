@@ -50,17 +50,26 @@ public class Planet {
     @Column(name = "number_of_moons")
     private int numberOfMoons;
 
+
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "planet_planet_type",
+                joinColumns = {@JoinColumn(name = "planet_id")},
+            inverseJoinColumns = {@JoinColumn(name = "planet_type_id")}
+    )
+    private List<PlanetType> planetTypes;
+
     public Planet(
-                  String name,
-                  double mass,
-                  double diameterInKilometers,
-                  double densityInKilogramsPerCubicMeter,
-                  double gravity,
-                  double lengthOfDayInHours,
-                  double distanceFromSun,
-                  double meanTemperaturInCelsius,
-                  int numberOfMoons,
-                  List<PlanetType> planetTypes
+            String name,
+            double mass,
+            double diameterInKilometers,
+            double densityInKilogramsPerCubicMeter,
+            double gravity,
+            double lengthOfDayInHours,
+            double distanceFromSun,
+            double meanTemperaturInCelsius,
+            int numberOfMoons,
+            List<PlanetType> planetTypes
     ) {
         this.mass = mass;
         this.diameterInKilometers = diameterInKilometers;
@@ -72,13 +81,6 @@ public class Planet {
         this.numberOfMoons = numberOfMoons;
         this.planetTypes = planetTypes;
     }
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "planet_planet_type",
-                joinColumns = {@JoinColumn(name = "planet_id")},
-            inverseJoinColumns = {@JoinColumn(name = "planet_type_id")}
-    )
-    private List<PlanetType> planetTypes;
 
 
     public Planet() {
