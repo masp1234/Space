@@ -1,9 +1,12 @@
 package com.example.space.planettype.model;
 
 import com.example.space.planet.model.Planet;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
+
 
 @Entity
 @Table(name = "planet_type")
@@ -17,7 +20,8 @@ public class PlanetType {
     @Column(name = "type")
     private String type;
 
-    @ManyToMany(mappedBy = "planetTypes")
+    @JsonBackReference
+    @ManyToMany(mappedBy = "planetTypes", fetch = FetchType.EAGER)
     private List<Planet> planets;
 
     public PlanetType(String type) {
@@ -26,6 +30,11 @@ public class PlanetType {
 
     public PlanetType() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "id: " + id + " type: " + type;
     }
 }
 

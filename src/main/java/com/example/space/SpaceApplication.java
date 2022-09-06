@@ -50,6 +50,11 @@ public class SpaceApplication {
             Reservation reservation = new Reservation(customers);
             reservationRepository.save(reservation);
             */
+            List<PlanetType> planetTypes = new ArrayList<>(
+                    Arrays.asList(new PlanetType("Gas giant"),
+                                  new PlanetType(("Jovian")))
+            );
+            planetTypeRepository.saveAll(planetTypes);
 
 
             Planet planet = new Planet(
@@ -63,8 +68,8 @@ public class SpaceApplication {
                     -232.7,
                     22,
                     Arrays.asList(
-                            new PlanetType("Gas giant"),
-                            new PlanetType("Jovian"))
+                            planetTypes.get(0),
+                            planetTypes.get(1))
                     );
 
             planetRepository.save(planet);

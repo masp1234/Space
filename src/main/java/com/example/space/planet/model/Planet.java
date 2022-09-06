@@ -2,9 +2,12 @@ package com.example.space.planet.model;
 
 
 import com.example.space.planettype.model.PlanetType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -52,7 +55,8 @@ public class Planet {
 
 
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "planet_planet_type",
                 joinColumns = {@JoinColumn(name = "planet_id")},
             inverseJoinColumns = {@JoinColumn(name = "planet_type_id")}
