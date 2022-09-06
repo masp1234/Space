@@ -8,6 +8,7 @@ import com.example.space.planettype.model.PlanetType;
 import com.example.space.planettype.repository.PlanetTypeRepository;
 import com.example.space.reservation.model.Reservation;
 import com.example.space.reservation.repository.ReservationRepository;
+import com.example.space.spaceship.model.Spaceship;
 import com.example.space.spaceship.repository.SpaceshipRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +39,7 @@ public class SpaceApplication {
 
         return (args) -> {
 
-      /*     final List<Customer> customers = new ArrayList<>();
+          final List<Customer> customers = new ArrayList<>();
             customers.add(new Customer("Jack", "Bauer", 26));
             customers.add(new Customer("Chloe", "O'Brian", 28));
             customers.add(new Customer("Kim", "Bauer", 22));
@@ -49,7 +50,12 @@ public class SpaceApplication {
 
             Reservation reservation = new Reservation(customers);
             reservationRepository.save(reservation);
-            */
+
+            Spaceship spaceship = new Spaceship(Arrays.asList(reservation));
+            spaceshipRepository.save(spaceship);
+
+
+
             List<PlanetType> planetTypes = new ArrayList<>(
                     Arrays.asList(new PlanetType("Gas giant"),
                                   new PlanetType(("Jovian")))
