@@ -56,7 +56,7 @@ public class SpaceApplication {
 
 
 
-            List<PlanetType> planetTypes = new ArrayList<>(
+           /* List<PlanetType> planetTypes = new ArrayList<>(
                     Arrays.asList(new PlanetType("Gas giant"),
                                   new PlanetType(("Jovian")))
             );
@@ -79,6 +79,8 @@ public class SpaceApplication {
                     );
 
             planetRepository.save(planet);
+
+            */
         };
     }
 }

@@ -33,7 +33,7 @@ public class Spaceship {
     @Column(name = "name")
     private String name;
 
-    @OneToMany
+    @OneToMany()
     private List<Reservation> reservations;
 
     public Spaceship(List<Reservation> reservations) {
