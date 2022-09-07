@@ -28,7 +28,7 @@ public class SpaceApplication {
         SpringApplication.run(SpaceApplication.class, args);
     }
 
-    @Bean
+  /*  @Bean
     public CommandLineRunner importData(
 
             CustomerRepository customerRepository,
@@ -81,9 +81,9 @@ public class SpaceApplication {
             planetRepository.save(planet);
 
             */
-        };
-    }
-}
+        }
+
+
 
 
 
