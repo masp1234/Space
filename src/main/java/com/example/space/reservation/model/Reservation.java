@@ -1,6 +1,8 @@
 package com.example.space.reservation.model;
 
 import com.example.space.customer.model.Customer;
+import com.example.space.spaceship.model.Spaceship;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -23,18 +25,22 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name = "customer_reservation",
                joinColumns = {@JoinColumn(name = "reservation_id")},
                inverseJoinColumns = {@JoinColumn(name = "customer_id")}
     )
     private List<Customer> customers = new ArrayList<>();
 
-    public Reservation() {}
+    @OneToOne
+    private Spaceship spaceship;
 
     public Reservation(List<Customer> customers) {
         this.customers = customers;
+    }
+    public Reservation() {
+
     }
 
     public List<Customer> getCustomers() {

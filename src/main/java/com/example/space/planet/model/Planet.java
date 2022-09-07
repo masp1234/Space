@@ -1,11 +1,16 @@
 package com.example.space.planet.model;
 
 
+import com.example.space.planettype.model.PlanetType;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
@@ -20,6 +25,9 @@ public class Planet {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "mass")
     private double mass;
@@ -47,4 +55,39 @@ public class Planet {
 
 
 
+    @JsonManagedReference
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name = "planet_planet_type",
+                joinColumns = {@JoinColumn(name = "planet_id")},
+            inverseJoinColumns = {@JoinColumn(name = "planet_type_id")}
+    )
+    private List<PlanetType> planetTypes;
+
+    public Planet(
+            String name,
+            double mass,
+            double diameterInKilometers,
+            double densityInKilogramsPerCubicMeter,
+            double gravity,
+            double lengthOfDayInHours,
+            double distanceFromSun,
+            double meanTemperaturInCelsius,
+            int numberOfMoons,
+            List<PlanetType> planetTypes
+    ) {
+        this.mass = mass;
+        this.diameterInKilometers = diameterInKilometers;
+        this.densityInKilogramsPerCubicMeter = densityInKilogramsPerCubicMeter;
+        this.gravity = gravity;
+        LengthOfDayInHours = lengthOfDayInHours;
+        this.distanceFromSun = distanceFromSun;
+        this.meanTemperaturInCelsius = meanTemperaturInCelsius;
+        this.numberOfMoons = numberOfMoons;
+        this.planetTypes = planetTypes;
+    }
+
+
+    public Planet() {
+
+    }
 }
