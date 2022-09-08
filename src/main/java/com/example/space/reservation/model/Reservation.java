@@ -2,6 +2,7 @@ package com.example.space.reservation.model;
 
 import com.example.space.customer.model.Customer;
 import com.example.space.spaceship.model.Spaceship;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -33,7 +34,8 @@ public class Reservation {
     )
     private List<Customer> customers = new ArrayList<>();
 
-    @OneToOne
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.EAGER)
     private Spaceship spaceship;
 
     public Reservation(List<Customer> customers) {
