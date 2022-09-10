@@ -1,28 +1,14 @@
-const showfetch = document.querySelector("#showfetch");
 
-
-
-$(document).ready(function(){
-    importData();
-    $("#hello").click(function() {
-        $("#hello").hide();
-    }
-    
-    )
-}
-);
+importData();
 
 async function importData() {
-    const response = await fetch(
-        'https://simple-books-api.glitch.me/books',
+    const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544');
 
-        {
-            method: 'GET'
-            
-        }
-    
-    
-        )
+
         const data = await response.json();
-        showfetch.innerHTML = data;
+        console.log(data);
+        showfetch.innerHTML = data.name;
+
+        const h2 = document.querySelector('#showfetch')
+        h2.innerHTML = data.name;
 };
