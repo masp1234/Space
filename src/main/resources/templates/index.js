@@ -49,9 +49,15 @@ async function getSpaceXLaunches() {
 
     const spaceXLaunches = await response.json();
     console.log(spaceXLaunches);
+
+        
     
     const spaceXLaunchesElement = document.querySelector('#spaceXLaunches');
-    spaceXLaunchesElement.innerHTML = spaceXLaunches[0].mission_name;
+
+    for(let i = 0; i < spaceXLaunches.length; i++) {
+        spaceXLaunchesElement.innerHTML += '<div class="mission-name">' + spaceXLaunches[i].mission_name + ' </div>'
+
+    }
 
 }
 
