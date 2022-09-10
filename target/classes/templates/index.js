@@ -1,4 +1,4 @@
-importData();
+
 
 async function importData() {
     const response = await fetch('https://api.wheretheiss.at/v1/satellites/25544');
@@ -29,6 +29,7 @@ $(document).ready(function () {
         $('#showfetch').show();
         console.log("left");
     })
+    importData();
 });
 
 
