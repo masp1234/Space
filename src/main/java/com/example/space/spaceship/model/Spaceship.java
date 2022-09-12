@@ -2,6 +2,7 @@ package com.example.space.spaceship.model;
 
 
 import com.example.space.reservation.model.Reservation;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
+
 
 @Entity
 @Table(name = "spaceship")
@@ -33,7 +34,8 @@ public class Spaceship {
     @Column(name = "name")
     private String name;
 
-    @OneToMany()
+    @JsonManagedReference
+    @OneToMany
     private List<Reservation> reservations;
 
     public Spaceship(List<Reservation> reservations) {
@@ -45,5 +47,15 @@ public class Spaceship {
 
     public Spaceship() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Spaceship{" +
+                "id=" + id +
+                ", speed=" + speed +
+                ", numberOfSeats=" + numberOfSeats +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

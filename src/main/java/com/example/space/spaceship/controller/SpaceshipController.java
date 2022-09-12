@@ -21,6 +21,7 @@ public class SpaceshipController {
     @GetMapping("/{id}")
     public ResponseEntity<Spaceship> findSpaceshipById(@PathVariable("id") Long id) {
         Optional<Spaceship> spaceship = Optional.of(spaceshipRepository.findById(id).orElseThrow(() -> new RuntimeException("not found")));
-    return ResponseEntity.ok().body(spaceship.get());
+        System.out.println(spaceship.get());
+        return ResponseEntity.ok().body(spaceship.get());
     }
 }
