@@ -2,6 +2,7 @@ package com.example.space.customer.model;
 
 
 import com.example.space.reservation.model.Reservation;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -34,8 +35,11 @@ public class Customer {
     @Column(name = "age")
     private int age;
 
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
 
-
+    @JsonBackReference
     @ManyToMany(mappedBy = "customers")
     private List<Reservation> reservations = new ArrayList<>();
 
@@ -47,11 +51,14 @@ public class Customer {
         this.lastName = lastName;
         this.age = age;
     }
+    public Customer(String firstName, String lastName, int age, List<Reservation> reservations) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.reservations = reservations;
+    }
 
     public Customer() {
 
-    }
-    public List<Reservation> getReservations() {
-        return reservations;
     }
 }
