@@ -28,7 +28,7 @@ public class SpaceApplication {
         SpringApplication.run(SpaceApplication.class, args);
     }
 
-    @Bean
+  @Bean
     public CommandLineRunner importData(
 
             CustomerRepository customerRepository,
@@ -39,7 +39,7 @@ public class SpaceApplication {
 
         return (args) -> {
 
-          final List<Customer> customers = new ArrayList<>();
+            final List<Customer> customers = new ArrayList<>();
             customers.add(new Customer("Jack", "Bauer", 26));
             customers.add(new Customer("Chloe", "O'Brian", 28));
             customers.add(new Customer("Kim", "Bauer", 22));
@@ -80,10 +80,13 @@ public class SpaceApplication {
 
             planetRepository.save(planet);
 
+
+        }
+
             */
-        };
-    }
-}
+        };}}
+
+
 
 
 
